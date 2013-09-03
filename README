@@ -11,6 +11,35 @@ now you need to get the
  selenium server standalone
 
 wget 'http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar'
-java -jar *.jar
+java -jar *.jar &
+
+launch the remote control tests.
+
+rspec test/*.rb
+you should see something like this from the selenium server.
+
+09:13:37.198 INFO - Command request: getNewBrowserSession[*chrome, http://www.library.cornell.edu/, , ] on session null
+09:13:37.199 INFO - creating new remote session
+09:13:37.199 INFO - Allocated session f13102593a214be2a803ec374d754daa for http://www.library.cornell.edu/, launching...
+jar:file:/users/es287/selenium-webdriver/main_ui_tests/selenium-server-standalone-2.35.0.jar!/customProfileDirCUSTFFCHROME
+09:13:37.232 INFO - Preparing Firefox profile...
+09:13:39.486 INFO - Launching Firefox...
+09:13:43.375 INFO - Got result: OK,f13102593a214be2a803ec374d754daa on session f13102593a214be2a803ec374d754daa
+09:13:43.378 INFO - Command request: setTimeout[300000, ] on session f13102593a214be2a803ec374d754daa
+09:13:43.480 INFO - Got result: OK on session f13102593a214be2a803ec374d754daa
+09:13:43.482 INFO - Command request: open[/, ] on session f13102593a214be2a803ec374d754daa
+09:13:44.446 INFO - Got result: OK on session f13102593a214be2a803ec374d754daa
+09:13:44.449 INFO - Command request: click[link=About Us, ] on session f13102593a214be2a803ec374d754daa
+09:13:44.615 INFO - Got result: OK on session f13102593a214be2a803ec374d754daa
+09:13:44.618 INFO - Command request: waitForPageToLoad[30000000, ] on session f13102593a214be2a803ec374d754daa
+09:13:45.093 INFO - Got result: OK on session f13102593a214be2a803ec374d754daa
+09:13:45.095 INFO - Command request: testComplete[, ] on session f13102593a214be2a803ec374d754daa
+09:13:45.096 INFO - Killing Firefox...
+09:13:45.153 INFO - Got result: OK on session f13102593a214be2a803ec374d754daa
+.
+Then the rspec finishes
+Finished in 7.96 seconds
+1 example, 0 failures
+
 
 

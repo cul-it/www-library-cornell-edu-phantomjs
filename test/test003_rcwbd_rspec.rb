@@ -14,8 +14,8 @@ describe "The website should" do
     @selenium_driver = Selenium::Client::Driver.new \
       :host => "localhost",
       :port => 4444,
-      :browser => "*chrome",
-      #:url => "http://www.library.cornell.edu/",
+      #:browser => "*chrome",
+      :browser => "*firefox",
       :url => "http://main.test.library.cornell.edu/",
       :timeout_in_second => 60
   end
@@ -29,10 +29,11 @@ describe "The website should" do
     @verification_errors.should == []
   end
   
-  it "have a homepage with About us link" do
+  it "have a link to Hours and Maps which shows the text: Today's Hours" do
     page.open "/"
-    page.click "link=About Us"
+    page.click "link=Hours and Maps"
     page.wait_for_page_to_load "30000"
-    page.is_text_present("Welcome").should be_true
+    page.is_text_present("Today's Hours").should be_true
+    page.is_element_present("identifier=showOption").should be_true
   end
 end

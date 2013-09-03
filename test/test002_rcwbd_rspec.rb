@@ -15,7 +15,7 @@ describe "The website should" do
       :host => "localhost",
       :port => 4444,
       :browser => "*chrome",
-      #:url => "http://www.library.cornell.edu/",
+#      :url => "http://www.library.cornell.edu/",
       :url => "http://main.test.library.cornell.edu/",
       :timeout_in_second => 60
   end
@@ -29,10 +29,10 @@ describe "The website should" do
     @verification_errors.should == []
   end
   
-  it "have a homepage with About us link" do
+  it "have a homepage, and link to Libraries, which displays 'Inside the Library'" do
     page.open "/"
-    page.click "link=About Us"
+    page.click "link=Libraries"
     page.wait_for_page_to_load "30000"
-    page.is_text_present("Welcome").should be_true
+    page.is_text_present("Inside the Library").should be_true
   end
 end
