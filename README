@@ -1,0 +1,16 @@
+set GEM_HOME to where you need your gems to
+be, like $HOME/rvmxxx
+export GEM_HOME=~/rvmxxx
+bundle install
+
+try to run the tests:
+rspec aeon_suite_rsprc.rb
+
+they will fail
+now you need to get the 
+ selenium server standalone
+
+wget 'http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar'
+java -jar *.jar
+
+
