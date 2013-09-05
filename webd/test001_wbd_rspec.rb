@@ -21,7 +21,7 @@ describe "The website" do
       @page_text = "Welcome"
       @driver.get(@base_url + "/")
       element_present?(:link, @link_text).should == true
-      @driver.find_element(:link, @link_text)
+      @driver.find_element(:link, @link_text).click
       text_found?(@page_text,@driver.find_element(:css, "BODY").text)
   end
 
