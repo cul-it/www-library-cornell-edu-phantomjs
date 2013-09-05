@@ -15,16 +15,14 @@ describe "The website" do
   end
 
   it "should have a link to 'course help' which shows a form to search course info and searches on topic" do
-    verify {
+    @link_text = "Course Help"
+    @page_text = "Search Course Info and Reserves"
     @driver.get(@base_url + "/")
-    @driver.find_element(:link, "Course Help").click
-    # Warning: assertTextPresent may require manual changes
-    #@driver.find_element(:css, "BODY").text.should =~ /^[\s\S]*Welcome[\s\S]*$/
-    #@driver.find_element(:css, "BODY").text.should =~ welcome 
-    # make sure regular exp char set, and body char set match
-    ttext = Regexp.new("Search Course Info and Reserves".force_encoding('UTF-8'))
-    btext = @driver.find_element(:css, "BODY").text.delete!("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-    btext.should =~ ttext 
+    element_present?(:link, @link_text).should == true
+    @driver.find_element(:link, @link_text).click
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?(@page_text, @body_text)
+
     element_present?(:id, "course-help-form").should == true
     sbox = @driver.find_element(:id, "searchBox")
     sbox.send_keys "Shakespeare"
@@ -32,23 +30,19 @@ describe "The website" do
     element_present?(:id, "edit-submit").should == true
     gobut = @driver.find_element(:id, "edit-submit")
     gobut.submit
-    ttext = Regexp.new("ENGL 1127".force_encoding('UTF-8'))
-    btext = @driver.find_element(:css, "BODY").text.delete!("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-    btext.should =~ ttext 
-    }
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?("ENGL 1127", @body_text)
   end
   
   it "should have a link to 'course help' which shows a form to search course info and searches on class number" do
-    verify {
+    @link_text = "Course Help"
+    @page_text = "Search Course Info and Reserves"
     @driver.get(@base_url + "/")
-    @driver.find_element(:link, "Course Help").click
-    # Warning: assertTextPresent may require manual changes
-    #@driver.find_element(:css, "BODY").text.should =~ /^[\s\S]*Welcome[\s\S]*$/
-    #@driver.find_element(:css, "BODY").text.should =~ welcome 
-    # make sure regular exp char set, and body char set match
-    ttext = Regexp.new("Search Course Info and Reserves".force_encoding('UTF-8'))
-    btext = @driver.find_element(:css, "BODY").text.delete!("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-    btext.should =~ ttext 
+    element_present?(:link, @link_text).should == true
+    @driver.find_element(:link, @link_text).click
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?(@page_text, @body_text)
+
     element_present?(:id, "course-help-form").should == true
     sbox = @driver.find_element(:id, "searchBox")
     sbox.send_keys "ENGL 1105"
@@ -56,22 +50,18 @@ describe "The website" do
     element_present?(:id, "edit-submit").should == true
     gobut = @driver.find_element(:id, "edit-submit")
     gobut.submit
-    ttext = Regexp.new("ENGL 1105: FWS:".force_encoding('UTF-8'))
-    btext = @driver.find_element(:css, "BODY").text.delete!("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-    btext.should =~ ttext 
-    }
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?("ENGL 1105: FWS:", @body_text)
   end
   it "should have a link to 'course help' which shows a form to search course info and searches on instructor" do
-    verify {
+    @link_text = "Course Help"
+    @page_text = "Search Course Info and Reserves"
     @driver.get(@base_url + "/")
-    @driver.find_element(:link, "Course Help").click
-    # Warning: assertTextPresent may require manual changes
-    #@driver.find_element(:css, "BODY").text.should =~ /^[\s\S]*Welcome[\s\S]*$/
-    #@driver.find_element(:css, "BODY").text.should =~ welcome 
-    # make sure regular exp char set, and body char set match
-    ttext = Regexp.new("Search Course Info and Reserves".force_encoding('UTF-8'))
-    btext = @driver.find_element(:css, "BODY").text.delete!("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-    btext.should =~ ttext 
+    element_present?(:link, @link_text).should == true
+    @driver.find_element(:link, @link_text).click
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?(@page_text, @body_text)
+
     element_present?(:id, "course-help-form").should == true
     sbox = @driver.find_element(:id, "searchBox")
     sbox.send_keys "Correll"
@@ -79,10 +69,28 @@ describe "The website" do
     element_present?(:id, "edit-submit").should == true
     gobut = @driver.find_element(:id, "edit-submit")
     gobut.submit
-    ttext = Regexp.new("PMA 2670:".force_encoding('UTF-8'))
-    btext = @driver.find_element(:css, "BODY").text.delete!("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-    btext.should =~ ttext 
-    }
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?("PMA 2670:", @body_text)
+  end
+
+  it "should have a link to 'course help' which shows a form to search course info and searches on instructor who does not exist" do
+    @link_text = "Course Help"
+    @page_text = "Search Course Info and Reserves"
+    @driver.get(@base_url + "/")
+    element_present?(:link, @link_text).should == true
+    @driver.find_element(:link, @link_text).click
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?(@page_text, @body_text)
+
+    element_present?(:id, "course-help-form").should == true
+    sbox = @driver.find_element(:id, "searchBox")
+    sbox.send_keys "zzzCorrell"
+    sbox.submit
+    element_present?(:id, "edit-submit").should == true
+    gobut = @driver.find_element(:id, "edit-submit")
+    gobut.submit
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?("'zzzCorrell' not found", @body_text)
   end
   def element_present?(how, what)
     @driver.find_element(how, what)

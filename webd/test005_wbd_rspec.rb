@@ -16,19 +16,13 @@ describe "The website" do
 
   
   it "should have a link to 'Help' which shows text 'Frequently Asked Questions'" do
-    verify {
+    @link_text = "Help"
+    @page_text = "Frequently Asked Questions"
     @driver.get(@base_url + "/")
-    @driver.find_element(:link, "Help").click
-    # Warning: assertTextPresent may require manual changes
-    #@driver.find_element(:css, "BODY").text.should =~ /^[\s\S]*Welcome[\s\S]*$/
-    #@driver.find_element(:css, "BODY").text.should =~ welcome 
-    # make sure regular exp char set, and body char set match
-    ttext = Regexp.new("Frequently Asked Questions".force_encoding('UTF-8'))
-    btext = @driver.find_element(:css, "BODY").text.delete!("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-    btext.should =~ ttext 
-    }
-    #@driver.find_element(:css, "BODY").text.should =~ welcome 
-    #element_present?(:id, "showOption").should == true
+    element_present?(:link, @link_text).should == true
+    @driver.find_element(:link, @link_text).click
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?(@page_text, @body_text)
   end
   
   def element_present?(how, what)

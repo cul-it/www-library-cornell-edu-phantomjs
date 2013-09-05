@@ -3,6 +3,7 @@ require "rspec"
 include RSpec::Expectations
 require_relative "helper"
 
+
 describe "The website" do
 
   include DriverHelper
@@ -14,15 +15,17 @@ describe "The website" do
   after(:each) do
     _after
   end
-  
-  it "should have a home page, and link to 'About Us',which leads to the aboutus page" do
-    verify {
-    @driver.get(@base_url + "/")
-    @driver.find_element(:link, "About Us")
-    @driver.find_element(:link, "About Us").click
-    }
+
+  it "should link to About Us,which leads to the aboutus page, containing 'Welcome'" do
+      @link_text = "About Us"
+      @page_text = "Welcome"
+      @driver.get(@base_url + "/")
+      element_present?(:link, @link_text).should == true
+      @driver.find_element(:link, @link_text)
+      text_found?(@page_text,@driver.find_element(:css, "BODY").text)
   end
-  
+
+
   def element_present?(how, what)
     @driver.find_element(how, what)
     true

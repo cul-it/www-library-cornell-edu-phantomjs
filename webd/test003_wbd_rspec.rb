@@ -15,19 +15,14 @@ describe "The website" do
   end
 
   it "should have a link to 'Hours and Maps' which shows hours, and has a showOption Button" do
+    @link_text = "Hours and Maps"
+    @page_text = "Today's Hours"
     @driver.get(@base_url + "/")
-    @driver.find_element(:link, "Hours and Maps").click
-    # Warning: assertTextPresent may require manual changes
-    #@driver.find_element(:css, "BODY").text.should =~ /^[\s\S]*Welcome[\s\S]*$/
-    #@driver.find_element(:css, "BODY").text.should =~ welcome 
-    ttext = Regexp.new("Today's Hours".force_encoding('UTF-8'))
-    btext = @driver.find_element(:css, "BODY").text.delete!("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-    btext.should =~ ttext 
-    ttext = Regexp.new("Africana Library".force_encoding('UTF-8'))
-    btext.should =~ ttext 
-    ttext = Regexp.new("Today's Hours".force_encoding('UTF-8'))
-    btext.should =~ ttext 
-    #@driver.find_element(:css, "BODY").text.should =~ welcome 
+    element_present?(:link, @link_text).should == true
+    @driver.find_element(:link, @link_text).click
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?(@page_text, @body_text)
+    text_found?("Africana Library", @body_text)
     element_present?(:id, "showOption").should == true
   end
   
