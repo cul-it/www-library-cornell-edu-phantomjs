@@ -1,25 +1,33 @@
 require "selenium-webdriver"
 require "rspec"
+require_relative "helper"
 include RSpec::Expectations
 
-describe "Test001" do
+describe "The website" do
+  include DriverHelper
 
   before(:each) do
-    @driver = Selenium::WebDriver.for :firefox
-    @base_url = "http://www.library.cornell.edu/"
-    @accept_next_alert = true
-    @driver.manage.timeouts.implicit_wait = 30
-    @verification_errors = []
+   _before
   end
   
   after(:each) do
-    @driver.quit
-    @verification_errors.should == []
+    _after
   end
-  
-  it "test_001" do
+
+  it "should have a link to 'Ask a Librarian' which shows the text 'Visit Us'" do
+    verify {
     @driver.get(@base_url + "/")
-    @driver.find_element(:link, "About Us").click
+    @driver.find_element(:link, "Ask a Librarian").click
+    # Warning: assertTextPresent may require manual changes
+    #@driver.find_element(:css, "BODY").text.should =~ /^[\s\S]*Welcome[\s\S]*$/
+    #@driver.find_element(:css, "BODY").text.should =~ welcome 
+    # make sure regular exp char set, and body char set match
+    ttext = Regexp.new("Visit Us".force_encoding('UTF-8'))
+    btext = @driver.find_element(:css, "BODY").text.delete!("^\u{0000}-\u{007F}").force_encoding('UTF-8')
+    btext.should =~ ttext 
+    }
+    #@driver.find_element(:css, "BODY").text.should =~ welcome 
+    #element_present?(:id, "showOption").should == true
   end
   
   def element_present?(how, what)

@@ -3,15 +3,10 @@ be, like $HOME/rvmxxx
 export GEM_HOME=~/rvmxxx
 bundle install
 
-try to run the tests:
-rspec aeon_suite_rsprc.rb
-
-they will fail
 now you need to get the 
- selenium server standalone
-
-wget 'http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar'
-java -jar *.jar &
+selenium server standalone
+  wget 'http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar'
+  java -jar *.jar &
 
 launch the remote control tests.
 
@@ -40,6 +35,13 @@ jar:file:/users/es287/selenium-webdriver/main_ui_tests/selenium-server-standalon
 Then the rspec finishes
 Finished in 7.96 seconds
 1 example, 0 failures
+
+To run this using webdriver,
+make sure phantomjs is in your path
+
+then run
+rspec webd/*.rb
+
 
 
 
