@@ -16,13 +16,23 @@ describe "The website" do
     _after
   end
 
-  it "should link to About Us,which leads to the aboutus page, containing 'Welcome'" do
+  it "should link to About Us,which leads to the aboutus page, containing 'Welcome', and some images." do
       @link_text = "About Us"
       @page_text = "Welcome"
       @driver.get(@base_url + "/")
+      images = @driver.find_elements(:tag_name => "img")
+      broken_images = images.reject do |image|
+        @driver.execute_script("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", image)
+      end
+      broken_images.size.should eql(0) 
       element_present?(:link, @link_text).should == true
       @driver.find_element(:link, @link_text).click
       text_found?(@page_text,@driver.find_element(:css, "BODY").text)
+      images = @driver.find_elements(:tag_name => "img")
+      broken_images = images.reject do |image|
+        @driver.execute_script("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", image)
+      end
+      broken_images.size.should eql(0) 
   end
 
 
