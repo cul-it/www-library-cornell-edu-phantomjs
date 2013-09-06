@@ -42,6 +42,9 @@ Finished in 7.96 seconds
 Web Driver
 
 To run this using webdriver, make sure phantomjs is in your path
+something like: (assuming you are in the checked out directory)
+
+PATH=$PWD/bin:$PATH
 
 The configuration shell script in jenkins does this.
 
