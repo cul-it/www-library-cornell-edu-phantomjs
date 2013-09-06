@@ -3,7 +3,7 @@ module DriverHelper
  def text_found?(what,where)
    ttext = Regexp.new(what.force_encoding('UTF-8'))
    btext = where.delete("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-   btext.should =~ ttext
+   expect(btext).to  match (ttext)
  end
 
  def _before() 
