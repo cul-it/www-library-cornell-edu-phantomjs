@@ -12,16 +12,15 @@
 <tr><td rowspan="1" colspan="3">Parameters.html</td></tr>
 </thead><tbody>
 <tr>
-	<td>store</td>
-	<td>http://main7.test.library.cornell.edu</td>
+	<td>storeEval</td>
+	<td>(storedVars['base_url'] === undefined) ? 'http://www.library.cornell.edu' : storedVars['base_url'];</td>
 	<td>base_url</td>
 </tr>
 <tr>
 	<td>echo</td>
-	<td>${base_url}</td>
+	<td>Base URL: ${base_url}</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
