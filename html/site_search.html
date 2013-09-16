@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.library.cornell.edu/" />
+<title>site_search</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">site_search</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>${base_url}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=search-form-query</td>
+	<td>party</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=search-filters1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=search-form-submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Web Site Search Results | Cornell University Library</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>name=googleSearchFrame</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Plate 94. A Burial Party. Cold Harbor, Virginia. April, 1865. Photographed by John Reekie. This sad scene represents the soldiers in the act of collecting the ...</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Guide to the Socialist Labor Party Records, 1877-1907. Collection Number: 5168mf. Kheel Center for Labor-Management Documentation and Archives, Cornell ...</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Burlington County (New Jersey) National Greenback Labor Ticket, ca. 1876. Continue the tour · Cornell University Library Gateway. Cool Site of the Day Award</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=edit-query</td>
+	<td>thought leader</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=edit-sa</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Abstract: Which thinkers are we guided by?</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Clifford Lynch of the Coalition for Networked Information and Wendy Lougee, University Librarian</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=search-form-query</td>
+	<td>party</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=search-filters2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=search-form-submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=div.gsc-expansionArea &gt; div.gsc-webResult.gsc-result &gt; div.gs-webResult.gs-result &gt; table.gsc-table-result &gt; tbody &gt; tr &gt; td.gsc-table-cell-snippet-close &gt; div.gs-bidi-start-align.gs-snippet</td>
+	<td>Parties are part of the social scene at Cornell. However, when people party with alcohol, there's the potential for inhibitions to decrease and risk-taking to ...</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//div[@id='cse']/div/div/div/div[5]/div[2]/div/div/div[2]/div[2]/div/table/tbody/tr/td[2]/div[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='cse']/div/div/div/div[5]/div[2]/div/div/div[2]/div[2]/div/table/tbody/tr/td[2]/div[2]</td>
+	<td>(a) When a Defending Party May Bring in a Third Party. (1) Timing of the Summons and Complaint. A defending party may, as third-party plaintiff, serve a ...</td>
+</tr>
+</tbody></table>
+</body>
+</html>
