@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.library.cornell.edu/" />
+<title>hours_maps</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">hours_maps</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>${base_url}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Hours and Maps</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Library Hours</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Today's Hours</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loc_Hotel</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Details for Hotel Library:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Thanksgiving Break</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='CUmap']/div/div/div/div[3]/div[3]/div[3]/div[2]/div/div/p/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//div[@id='CUmap']/div/div/div/div[3]/div[3]/div[3]/div[2]/div/div/p/span</td>
+	<td>Statler Hall</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loc_Rare</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Details for Kroch Library, Division of Rare and Manuscript Collections:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Exceptions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//div[@id='CUmap']/div/div/div/div[3]/div[3]/div[3]/div[2]/div/div/p/span</td>
+	<td>Academic Surge Facility A</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loc_PHYSCI</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Details for Physical Sciences Library (Edna McConnell Clark Library):</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>24/7 study space is available in Clark Hall</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loc_Vet</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Details for Veterinary Library:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Exceptions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=loc_Uris</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loc_Uris</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Details for Uris Library:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>M-Th services closed 2-8 AM, F closed at 9 PM, Su open at 10 AM</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Exceptions</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//div[@id='CUmap']/div/div/div/div[3]/div[3]/div[3]/div[2]/div/div/p/span</td>
+	<td>Uris Library</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loc_MATH</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//div[@id='CUmap']/div/div/div/div[3]/div[3]/div[3]/div[2]/div/div/p/span</td>
+	<td>Malott Hall</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#loc_ANNEX &gt; span.today</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForPageToLoad</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#details &gt; h2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#details &gt; h2</td>
+	<td>Details for Library Annex:</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Details for Library Annex</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loc_ILR</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#details &gt; h2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Details for ILR Library:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='CUmap']/div/div/div/div[3]/div[3]/div[3]/div[2]/div/div/p/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//div[@id='CUmap']/div/div/div/div[3]/div[3]/div[3]/div[2]/div/div/p/span</td>
+	<td>Ives Hall</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=loc_MANNLIB</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>css=#details &gt; h2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=#details &gt; h2</td>
+	<td>Details for Mann Library:</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Senior Week &amp; Commencement</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Summer Intersession I</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Summer Intersession II</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
