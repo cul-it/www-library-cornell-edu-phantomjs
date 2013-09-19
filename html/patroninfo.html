@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.library.cornell.edu/" />
+<title>patroninfo</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">patroninfo</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>${base_url}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>deleteCookie</td>
+	<td>cuwlrelogin</td>
+	<td>path=/, domain=.login.cornell.edu, recurse=true</td>
+</tr>
+<tr>
+	<td>deleteCookie</td>
+	<td>cuwltgttime</td>
+	<td>path=/, domain=.cornell.edu, recurse=true</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=My Account</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=netid</td>
+	<td>${user_netid}</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password</td>
+	<td>${user_password}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=Submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Account information for</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>My Account Information | Cornell University Library</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=cbottonc</td>
+	<td>Renew Marked Items</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=cbottond</td>
+	<td>Renew All Voyager Items</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=cbottona</td>
+	<td>Export All Items</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=cbotton</td>
+	<td>Export Marked Items</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='pi-tabs']/ul/li[5]/a/span</td>
+	<td>Notices(0)</td>
+</tr>
+</tbody></table>
+</body>
+</html>
