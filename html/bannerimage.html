@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://www.library.cornell.edu/" />
+<title>bannerimage</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">bannerimage</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>${base_url}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=One of millions of images from our collections. Click for details.</td>
+	<td>One of millions of images from our collections. Click for details.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=One of millions of images from our collections. Click for details.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Image URL:</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=Visit this image collection</td>
+	<td>Visit this image collection</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=other digital collections</td>
+	<td>other digital collections</td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=other digital collections</td>
+	<td>other digital collections</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${base_url}/bannerimage/show/300.jpg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTitle</td>
+	<td>Hayes-Wheeler Metal and Paper Lantern Candle Holder, 1876 (Artifact) | Cornell University Library</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='node-1671']/div/div[3]/div[2]/div</td>
+	<td>300</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='node-1671']/div/div[4]/div[2]/div</td>
+	<td>1876</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${base_url}/bannerimage/show/271.jpg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='node-1638']/div/div[5]/div[2]/div</td>
+	<td>C. Holt</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h1.with-tabs</td>
+	<td>Dance-mask. Wajang Toping. Comical personage. Coll: Bali Museum. (Painted wood)</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${base_url}/bannerimage/show/217.jpg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h1.with-tabs</td>
+	<td>Tari Bondan</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=exact:http://library24.library.cornell.edu:8280/luna/servlet/detail/CORNELL~4~1~839~10024</td>
+	<td>exact:http://library24.library.cornell.edu:8280/luna/servlet/detail/CORNELL~4~1~839~10024</td>
+</tr>
+</tbody></table>
+</body>
+</html>
