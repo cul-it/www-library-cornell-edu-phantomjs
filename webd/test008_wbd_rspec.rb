@@ -15,7 +15,7 @@ describe "The website" do
   end
 
   it "should have a link to 'aboutus/culpartners' which shows links to partner categories" do
-    @driver.get(@base_url + "/aboutus/culpartners")
+    @driver.get(@base_url + "/about/partnerships")
     # make sure regular exp char set, and body char set match
     text_found?('Cornell Faculty and Programs',@driver.find_element(:css, "BODY").text)
     text_found?('Other Universities and University Libraries',@driver.find_element(:css, "BODY").text)

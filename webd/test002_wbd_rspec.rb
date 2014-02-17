@@ -22,7 +22,7 @@ describe "The website" do
     element_present?(:link, @link_text).should == true
     @driver.find_element(:link, @link_text).click
     @body_text = @driver.find_element(:css, "BODY").text
-    text_found?(@page_text, @body_text)
+    #text_found?(@page_text, @body_text)
     text_found?("Africana Library", @body_text)
   end
   

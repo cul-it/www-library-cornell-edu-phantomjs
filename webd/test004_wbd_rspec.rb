@@ -15,7 +15,7 @@ describe "The website" do
   end
 
   
-  it "should have a link to 'My Account' which link to My Account display page" do
+  it "should have a link to 'My Account' which links to My Account entry page" do
     @link_text = "My Account"
     @page_text = "Renew your books"
     @driver.get(@base_url + "/")
@@ -25,6 +25,26 @@ describe "The website" do
     text_found?(@page_text, @body_text)
   end
   
+  it "should have a link to 'My Account' which links to My Account page, which links to myacct" do
+    @link_text = "My Account"
+    @page_text = "Renew your books"
+    @driver.get(@base_url + "/")
+    element_present?(:link, @link_text).should == true
+    @driver.find_element(:link, @link_text).click
+    @body_text = @driver.find_element(:css, "BODY").text
+    text_found?(@page_text, @body_text)
+    @link_text = "Login with your NetID or GuestID"
+    element_present?(:partial_link_text, @link_text).should == true
+    @driver.find_element(:partial_link_text, @link_text).click
+    # Make sure we are on the login screen
+    element_present?(:id, 'netid').should == true
+    element_present?(:id, 'password').should == true
+    element_present?(:name, 'Submit').should == true
+    @driver.find_element(:id, 'netid').send_keys 'es287'
+    @driver.find_element(:id, 'password').send_keys 'Hunyb3@r'
+    @driver.find_element(:name, 'Submit').click
+  end
+
   def element_present?(how, what)
     @driver.find_element(how, what)
     true
