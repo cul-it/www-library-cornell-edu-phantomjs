@@ -77,11 +77,11 @@ describe "The website" do
      {"ptext"=>"Home","pcount"=>2},
      {"ptext"=>"Feedback","pcount"=>1},
      {"ptext"=>"About Us","pcount"=>1},
-     {"ptext"=>"Research","pcount"=>4},
+     {"ptext"=>"Research","pcount"=>5},
      {"ptext"=>"Libraries","pcount"=>1},
      {"ptext"=>"Hours and Maps","pcount"=>1},
-     {"ptext"=>"Courses","pcount"=>1},
-     {"ptext"=>"Services","pcount"=>3},
+     {"ptext"=>"Courses","pcount"=>2},
+     {"ptext"=>"Services","pcount"=>4},
      {"ptext"=>"Ask a Librarian","pcount"=>2},
      ]
     @driver.save_screenshot("home300.png")
