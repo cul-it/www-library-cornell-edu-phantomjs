@@ -16,14 +16,16 @@ describe "The website" do
 
   it "should have a link to 'Disability Services' which describes disability services." do
     page_texts = [
-     {"ptext"=>"Borrow, Renew, Return","pcount"=>1}, 
-     {"ptext"=>"Disability Services","pcount"=>1}, 
-     {"ptext"=>"Library Spaces","pcount"=>1},
-     {"ptext"=>"SPOTLIGHT","pcount"=>0}, 
-     {"ptext"=>"NEWS","pcount"=>0}, 
-     {"ptext"=>"LIBESCOPE","pcount"=>0} ]
-    @link_text = "Disability Services"
+     {"ptext"=>"Contact information","pcount"=>1}, 
+     {"ptext"=>"Assistive technologies in the libraries","pcount"=>1}, 
+     {"ptext"=>"Access to materials","pcount"=>1},
+     {"ptext"=>"Private study or work spaces","pcount"=>1},
+     ]
     @driver.get(@base_url + "/")
+    # first we must expose the services area.
+    rt = @driver.find_element(:id,'library_services_tab')
+    @driver.action.move_to(rt).perform
+    @link_text = "Disability Services"
     element_present?(:partial_link_text, @link_text).should be_true,"expected to find '#{@link_text}' as link text and did not"
     @driver.find_element(:partial_link_text, @link_text).click
     @driver.save_screenshot("home#{@link_text}.png")
@@ -35,7 +37,7 @@ describe "The website" do
       links_present?( l['ptext'],l['pcount']).should be_true ,"expected #{l['pcount']} links for #{l['ptext']}, got #{links_present(l['ptext'])}"
     end
   end
-
+  if false
   it "should have standard header links, and they are duplicated in the footer" do
     @link_text = "Disability Services"
     @driver.get(@base_url + "/")
@@ -96,6 +98,7 @@ describe "The website" do
       text_found?(l['ptext'], @body_text).should be_true, "expected to find  #{l['ptext']} and did not"
       links_present?( l['ptext'],l['pcount']).should be_true ,"expected #{l['pcount']} links for #{l['ptext']}, got #{links_present(l['ptext'])}"
     end
+  end
   end
   
   def links_present(t)

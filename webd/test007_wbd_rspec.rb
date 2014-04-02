@@ -3,6 +3,7 @@ require "rspec"
 require_relative "helper"
 include RSpec::Expectations
 
+  @courses
 describe "The website" do
   include DriverHelper
 
@@ -14,26 +15,29 @@ describe "The website" do
     _after
   end
 
-  it "should have a link to 'course help' which shows a form to search course info and searches on topic" do
+  it "should have a link to 'course help' which shows a form to search course info and searches on topic", :shakespeare => true  do
     @id  = "searchBox"
     @driver.get(@base_url + "/")
     element_present?(:id, @id).should == true
     element_present?(:id, "course-help-form").should == true
     sbox = @driver.find_element(:id, "searchBox")
+    gbot = @driver.find_element(:id, "edit-submit")
     sbox.send_keys "Shakespeare"
-    sbox.submit
+    gbot.click
     @body_text = @driver.find_element(:css, "BODY").text
-    text_found?("ENGL 1127", @body_text)
+    text_found?("ENGL 3475", @body_text)
   end
   
-  it "should have a link to 'course help' which shows a form to search course info and searches on class number" do
+  it "should have a link to 'course help' which shows a form to search course info and searches on class number", :engl_1105 =>true do
     @id  = "searchBox"
     @driver.get(@base_url + "/")
     element_present?(:id, @id).should == true
     element_present?(:id, "course-help-form").should == true
     sbox = @driver.find_element(:id, "searchBox")
+    gbot = @driver.find_element(:id, "edit-submit")
     sbox.send_keys "ENGL 1105"
-    sbox.submit
+    #sbox.submit
+    gbot.click
     @body_text = @driver.find_element(:css, "BODY").text
     text_found?("ENGL 1105: FWS:", @body_text)
   end
@@ -44,8 +48,10 @@ describe "The website" do
     element_present?(:id, @id).should == true
     element_present?(:id, "course-help-form").should == true
     sbox = @driver.find_element(:id, "searchBox")
+    gbot = @driver.find_element(:id, "edit-submit")
     sbox.send_keys "Banerjee"
-    sbox.submit
+    #sbox.submit
+    gbot.click
     @body_text = @driver.find_element(:css, "BODY").text
     text_found?("COML 3475:", @body_text)
   end
@@ -56,10 +62,12 @@ describe "The website" do
     element_present?(:id, @id).should == true
     element_present?(:id, "course-help-form").should == true
     sbox = @driver.find_element(:id, "searchBox")
+    gbot = @driver.find_element(:id, "edit-submit")
     sbox.send_keys "zzzBanerjee"
-    sbox.submit
+    #sbox.submit
+    gbot.click
     @body_text = @driver.find_element(:css, "BODY").text
-    text_found?("'zzzBanerjee'\nNo results found", @body_text)
+    text_found?("'zzzBanerjee' not found", @body_text)
   end
   def element_present?(how, what)
     @driver.find_element(how, what)

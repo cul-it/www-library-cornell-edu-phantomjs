@@ -14,18 +14,19 @@ describe "The website" do
     _after
   end
 
-  it "should have a link to various pages which shows the at the top and bottom of page." do
+  it "should have a link to various pages which shows the at the top and bottom of page." , :topo =>true do
     page_texts = [
-     {"ptext"=>"Citation","pcount"=>2}, 
+     {"ptext"=>"Citation","pcount"=>1}, 
      #{"ptext"=>"Ask a Librarian","pcount"=>3}, # some prob with same value for firefox, and phantomjs
-     {"ptext"=>"Current Awareness","pcount"=>2},
-     {"ptext"=>"Introduction to Research","pcount"=>2}, 
+     {"ptext"=>"Current Awareness","pcount"=>1},
+     {"ptext"=>"Introduction to Research","pcount"=>1}, 
      {"ptext"=>"Library Guides","pcount"=>1}, 
-     {"ptext"=>"Research Consultation","pcount"=>2},
-     {"ptext"=>"SPOTLIGHT","pcount"=>0}, 
-     {"ptext"=>"NEWS","pcount"=>0}, 
-     {"ptext"=>"LIBESCOPE","pcount"=>0} ]
-    @link_text = "Research"
+     {"ptext"=>"Research Consultation","pcount"=>1},
+     ]
+     # first we must expose the research area.
+     # rt = @driver.find_element(:id,'research_help_tab')
+     # @driver.action.move_to(rt).perform
+    @link_text = "Research Help"
     @driver.get(@base_url + "/")
     element_present?(:link, @link_text).should be_true,"expected to find '#{@link_text}' as link text and did not"
     @driver.find_element(:link, @link_text).click
@@ -35,7 +36,9 @@ describe "The website" do
       links_present?( l['ptext'],l['pcount']).should be_true ,"expected #{l['pcount']} links for #{l['ptext']}, got #{links_present(l['ptext'])}"
     end
   end
-
+  # These following items check the modifications required on size change,
+  # but these do not happen on the OLD site.
+  if false 
   it "should have standard links, and they are duplicated in the footer" do
     @driver.get(@base_url + "/")
     @driver.manage.window.move_to(300, 400)
@@ -90,6 +93,7 @@ describe "The website" do
       text_found?(l['ptext'], @body_text).should be_true, "expected to find  #{l['ptext']} and did not"
       links_present?( l['ptext'],l['pcount']).should be_true ,"expected #{l['pcount']} links for #{l['ptext']}, got #{links_present(l['ptext'])}"
     end
+  end
   end
 
   

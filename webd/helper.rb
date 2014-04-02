@@ -7,9 +7,11 @@ module DriverHelper
  end
 
  def _before() 
-   #@driver = Selenium::WebDriver.for :firefox
-   @driver = Selenium::WebDriver.for :phantomjs 
-  @default_base_url = 'http://beta.library.cornell.edu' 
+   @default_driver = :phantomjs 
+   @drivervalue = ENV::has_key?('DRIVER') ? ENV['DRIVER'].to_sym  : @default_driver 
+   @driver = Selenium::WebDriver.for @drivervalue 
+   #@driver = Selenium::WebDriver.for :phantomjs 
+   @default_base_url = 'http://beta.library.cornell.edu' 
    @base_url = ENV::has_key?('BASE_URL') ? ENV['BASE_URL']  : @default_base_url 
    @accept_next_alert = true
    @driver.manage.timeouts.implicit_wait = 30

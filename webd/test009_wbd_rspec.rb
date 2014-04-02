@@ -15,19 +15,25 @@ describe "The website" do
   end
 
   it "should link to 'Requests' which shows the text 'Borrowing and Delivery'" do
-    @link_text = ' Borrow, Renew, Return'
+    @link_text = 'Borrowing and Delivery'
     @page_text = 'Borrowing'
     @driver.get(@base_url + "/")
-    element_present?(:link, @link_text).should == true
+    # first we must expose the requests area.
+    rt = @driver.find_element(:id,'requests_tab')
+    @driver.action.move_to(rt).perform
+    element_present?(:partial_link_text, @link_text).should == true
     @driver.find_element(:link, @link_text).click
     @body_text = @driver.find_element(:css, "BODY").text
     text_found?(@page_text, @body_text)
   end
 
   it "should link to 'Requests' which shows the text 'Borrowing and Delivery', and links to Faculty and Staff page." do
-    @link_text = ' Borrow, Renew, Return'
+    @link_text = 'Borrowing and Delivery'
     @page_text = 'Borrowing'
     @driver.get(@base_url + "/")
+    # first we must expose the requests area.
+    rt = @driver.find_element(:id,'requests_tab')
+    @driver.action.move_to(rt).perform
     element_present?(:partial_link_text, @link_text).should == true
     @driver.find_element(:link, @link_text).click
     @body_text = @driver.find_element(:css, "BODY").text

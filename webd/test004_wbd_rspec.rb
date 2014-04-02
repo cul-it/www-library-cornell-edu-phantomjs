@@ -33,7 +33,7 @@ describe "The website" do
     @driver.find_element(:link, @link_text).click
     @body_text = @driver.find_element(:css, "BODY").text
     text_found?(@page_text, @body_text)
-    @link_text = "Login with your NetID or GuestID"
+    @link_text = "Login"
     element_present?(:partial_link_text, @link_text).should == true
     @driver.find_element(:partial_link_text, @link_text).click
     # Make sure we are on the login screen
