@@ -93,23 +93,6 @@ describe "The website" do
   end
 
   
-  def links_present(t)
-     @driver.find_elements(:partial_link_text, t).size 
-    rescue Selenium::WebDriver::Error::NoSuchElementError
-       0 
-  end
-
-  def links_present?(t, c)
-     a = @driver.find_elements(:partial_link_text, t)
-
-     @driver.find_elements(:partial_link_text, t).size ==  c  ?
-        true
-      : 
-        false
-    #rescue Selenium::WebDriver::Error::NoSuchElementError
-    #    false
-  end
-
   def element_present?(how, what)
     @driver.find_element(how, what)
     true

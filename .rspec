@@ -1,0 +1,2 @@
+--require /tmp/jenkins-main7-rvmxxx//gems/ci_reporter-1.9.2/lib/ci/reporter/rake/rspec_loader
+--format CI::Reporter::RSpec

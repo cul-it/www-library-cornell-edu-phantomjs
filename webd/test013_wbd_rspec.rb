@@ -16,7 +16,7 @@ describe "The website" do
 
   it "should have a link to 'Disability Services' which describes disability services." do
     page_texts = [
-     {"ptext"=>"Borrow, Renew, Return","pcount"=>1}, 
+     {"ptext"=>"Borrow, Request, Renew, Return","pcount"=>1}, 
      {"ptext"=>"Disability Services","pcount"=>1}, 
      {"ptext"=>"Library Spaces","pcount"=>1},
      {"ptext"=>"SPOTLIGHT","pcount"=>0}, 
@@ -98,22 +98,6 @@ describe "The website" do
     end
   end
   
-  def links_present(t)
-     @driver.find_elements(:partial_link_text, t).size 
-    rescue Selenium::WebDriver::Error::NoSuchElementError
-       0 
-  end
-
-  def links_present?(t, c)
-     a = @driver.find_elements(:partial_link_text, t)
-
-     @driver.find_elements(:partial_link_text, t).size ==  c  ?
-        true
-      : 
-        false
-    #rescue Selenium::WebDriver::Error::NoSuchElementError
-    #    false
-  end
 
   def element_present?(how, what)
     @driver.find_element(how, what)

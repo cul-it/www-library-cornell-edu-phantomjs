@@ -5,6 +5,22 @@ module DriverHelper
    btext = where.delete("^\u{0000}-\u{007F}").force_encoding('UTF-8')
    btext.should =~ ttext
  end
+def links_present(t)
+     @driver.find_elements(:partial_link_text, t).size
+    rescue Selenium::WebDriver::Error::NoSuchElementError
+       0
+  end
+
+  def links_present?(t, c)
+     a = @driver.find_elements(:partial_link_text, t)
+
+     @driver.find_elements(:partial_link_text, t).size >=  c  ?
+        true
+      :
+        false
+    #rescue Selenium::WebDriver::Error::NoSuchElementError
+    #    false
+  end
 
  def _before() 
    #@driver = Selenium::WebDriver.for :firefox
