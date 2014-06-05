@@ -55,5 +55,4 @@ describe "The website" do
     text = @body_text
     text_found?(uname, text)
   end
-  end
 end
