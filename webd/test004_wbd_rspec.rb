@@ -40,13 +40,13 @@ describe "The website" do
     element_present?(:id, 'netid').should == true
     element_present?(:id, 'password').should == true
     element_present?(:name, 'Submit').should == true
-    password = ENV['PASSWORD'] 
-    user = ENV['USER'] 
-    uname = ENV['UNAME'] 
-    user.should_not be_nil,"You should specify the USER environment variable to test the MyAccount feature"
-    password.should_not be_nil,"You should specify the PASSWORD environment variable to test the MyAccount feature"
-    uname.should_not be_nil,"You should specify the UNAME (User full) name environment variable to test the MyAccount feature"
-    uname.should_not eql(''),"You should specify the UNAME (User full) name environment variable to test the MyAccount feature"
+    password = ENV['MYACC_PASSWORD'] 
+    user = ENV['MYACC_USER'] 
+    uname = ENV['MYACC_UNAME'] 
+    user.should_not be_nil,"You should specify the MYACC_USER environment variable to test the MyAccount feature"
+    password.should_not be_nil,"You should specify the MYACC_PASSWORD environment variable to test the MyAccount feature"
+    uname.should_not be_nil,"You should specify the MYACC_UNAME (User full) name environment variable to test the MyAccount feature"
+    uname.should_not eql(''),"You should specify the MYACC_UNAME (User full) name environment variable to test the MyAccount feature"
     @driver.find_element(:id, 'netid').send_keys user 
     @driver.find_element(:id, 'password').send_keys password 
     @driver.find_element(:name, 'Submit').click
