@@ -42,11 +42,18 @@ describe "The website" do
     element_present?(:name, 'Submit').should == true
     password = ENV['PASSWORD'] 
     user = ENV['USER'] 
+    uname = ENV['UNAME'] 
     user.should_not be_nil,"You should specify the USER environment variable to test the MyAccount feature"
     password.should_not be_nil,"You should specify the PASSWORD environment variable to test the MyAccount feature"
+    uname.should_not be_nil,"You should specify the UNAME (User full) name environment variable to test the MyAccount feature"
+    uname.should_not eql(''),"You should specify the UNAME (User full) name environment variable to test the MyAccount feature"
     @driver.find_element(:id, 'netid').send_keys user 
     @driver.find_element(:id, 'password').send_keys password 
     @driver.find_element(:name, 'Submit').click
+    #@driver.save_screenshot("home_#{user}.png")
+    @body_text = @driver.find_element(:css, "BODY").text
+    text = @body_text
+    text_found?(uname, text)
   end
 
   def element_present?(how, what)
