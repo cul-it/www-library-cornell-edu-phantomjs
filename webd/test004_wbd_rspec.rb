@@ -40,8 +40,12 @@ describe "The website" do
     element_present?(:id, 'netid').should == true
     element_present?(:id, 'password').should == true
     element_present?(:name, 'Submit').should == true
-    @driver.find_element(:id, 'netid').send_keys 'es287'
-    @driver.find_element(:id, 'password').send_keys 'Hunyb3@r'
+    password = ENV['PASSWORD'] 
+    user = ENV['USER'] 
+    user.should_not be_nil,"You should specify the USER environment variable to test the MyAccount feature"
+    password.should_not be_nil,"You should specify the PASSWORD environment variable to test the MyAccount feature"
+    @driver.find_element(:id, 'netid').send_keys user 
+    @driver.find_element(:id, 'password').send_keys password 
     @driver.find_element(:name, 'Submit').click
   end
 
