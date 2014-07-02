@@ -44,10 +44,10 @@ describe "The website" do
     element_present?(:id, @id).should == true
     element_present?(:id, "course-help-form").should == true
     sbox = @driver.find_element(:id, "searchBox")
-    sbox.send_keys "Banerjee"
+    sbox.send_keys "Gainor"
     sbox.submit
     @body_text = @driver.find_element(:css, "BODY").text
-    text_found?("COML 3475:", @body_text)
+    text_found?("ENGL 1131:", @body_text)
   end
 
   it "should have a link to 'course help' which shows a form to search course info and searches on instructor who does not exist" do

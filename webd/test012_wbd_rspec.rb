@@ -42,12 +42,11 @@ describe "The website" do
     @driver.manage.window.resize_to(1024, 600)
     #@driver.manage.window.maximize
     page_texts = [
-     {"ptext"=>"Home","pcount"=>4}, 
+     {"ptext"=>"Home","pcount"=>3}, 
      {"ptext"=>"Feedback","pcount"=>1}, 
      {"ptext"=>"About Us","pcount"=>2}, 
      {"ptext"=>"Research","pcount"=>2}, 
-     {"ptext"=>"Libraries","pcount"=>2}, 
-     {"ptext"=>"Hours and Maps","pcount"=>2}, 
+     {"ptext"=>"Libraries and Hours","pcount"=>1}, 
      {"ptext"=>"Courses","pcount"=>2}, 
      {"ptext"=>"Services","pcount"=>4}, 
      {"ptext"=>"Ask a Librarian","pcount"=>2}, 
@@ -73,15 +72,9 @@ describe "The website" do
     @driver.manage.window.resize_to(300, 400)
     #@driver.manage.window.maximize
     page_texts = [
-     {"ptext"=>"Home","pcount"=>3},
+     {"ptext"=>"Menu","pcount"=>1},
      {"ptext"=>"Feedback","pcount"=>1},
-     {"ptext"=>"About Us","pcount"=>1},
-     {"ptext"=>"Research","pcount"=>1},
      {"ptext"=>"Libraries","pcount"=>1},
-     {"ptext"=>"Hours and Maps","pcount"=>1},
-     {"ptext"=>"Courses","pcount"=>1},
-     {"ptext"=>"Services","pcount"=>3},
-     {"ptext"=>"Ask a Librarian","pcount"=>1},
      ]
     @driver.save_screenshot("home300.png")
     element_present?(:class,'navbar-toggle').should be_true,"expected to find icon bar and did not"
