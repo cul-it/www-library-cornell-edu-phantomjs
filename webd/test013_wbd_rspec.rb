@@ -19,7 +19,6 @@ describe "The website" do
      {"ptext"=>"Borrow, Request, Renew, Return","pcount"=>1}, 
      {"ptext"=>"Disability Services","pcount"=>1}, 
      {"ptext"=>"Library Spaces","pcount"=>1},
-     {"ptext"=>"SPOTLIGHT","pcount"=>0}, 
      {"ptext"=>"NEWS","pcount"=>0}, 
      {"ptext"=>"LIBESCOPE","pcount"=>0} ]
     @link_text = "Disability Services"

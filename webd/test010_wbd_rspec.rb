@@ -22,7 +22,6 @@ describe "The website" do
      {"ptext"=>"Introduction to Research","pcount"=>2}, 
      {"ptext"=>"Library Guides","pcount"=>1}, 
      {"ptext"=>"Research Consultation","pcount"=>2},
-     {"ptext"=>"SPOTLIGHT","pcount"=>0}, 
      {"ptext"=>"NEWS","pcount"=>0}, 
      {"ptext"=>"LIBESCOPE","pcount"=>0} ]
     @link_text = "Research"

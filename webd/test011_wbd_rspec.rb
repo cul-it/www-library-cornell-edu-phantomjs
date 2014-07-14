@@ -21,7 +21,6 @@ describe "The website" do
      {"ptext"=>"Passkey and other tools","pcount"=>1}, 
      {"ptext"=>"Disability Services","pcount"=>2}, 
      {"ptext"=>"Library Spaces","pcount"=>2},
-     {"ptext"=>"SPOTLIGHT","pcount"=>0}, 
      {"ptext"=>"NEWS","pcount"=>0}, 
      {"ptext"=>"LIBESCOPE","pcount"=>0} ]
     @link_text = "Services"
