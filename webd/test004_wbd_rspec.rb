@@ -14,7 +14,6 @@ describe "The website" do
     _after
   end
 
-if false  
   it "should have a link to 'My Account' which links to My Account entry page" do
     @link_text = "My Account"
     @page_text = "Login with your NetID or GuestID"
@@ -55,7 +54,6 @@ if false
     text = @body_text
     text_found?(uname, text)
   end
-end
 
   it "should have a link to 'My Account' which goes to myacctpage, and has a save all to cit manager" do
     @link_text = "My Account"
