@@ -14,70 +14,74 @@ describe "The website" do
     _after
   end
 
-  it "should link to 'Library Services' which shows the text 'Borrowing and Delivery'" do
-    @link_text = 'Library Services'
-    @page_text = 'Borrowing and Delivery'
+  it "should have a link to various pages which shows the at the top and bottom of page." do
+    page_texts = [
+     {"ptext"=>"Citation","pcount"=>2}, 
+     #{"ptext"=>"Ask a Librarian","pcount"=>3}, # some prob with same value for firefox, and phantomjs
+     {"ptext"=>"Current Awareness","pcount"=>2},
+     {"ptext"=>"Introduction to Research","pcount"=>2}, 
+     {"ptext"=>"Library Guides","pcount"=>1}, 
+     {"ptext"=>"Research Consultation","pcount"=>2},
+     {"ptext"=>"NEWS","pcount"=>0}, 
+     {"ptext"=>"LIBESCOPE","pcount"=>0} ]
+    @link_text = "Research"
     @driver.get(@base_url + "/")
-    element_present?(:link, @link_text).should == true
+    element_present?(:link, @link_text).should be_true,"expected to find '#{@link_text}' as link text and did not"
     @driver.find_element(:link, @link_text).click
     @body_text = @driver.find_element(:css, "BODY").text
-    text_found?(@page_text, @body_text)
-  end
-
-  it "should link to 'Library Services' which shows the text 'Borrowing and Delivery'" do
-    @link_text = 'Library Services'
-    @page_text = 'Borrowing and Delivery'
-    @driver.get(@base_url + "/")
-    element_present?(:partial_link_text, @link_text).should == true
-    @driver.find_element(:link, @link_text).click
-    @body_text = @driver.find_element(:css, "BODY").text
-    text_found?(@page_text, @body_text)
-
-    @link_text = 'Borrowing and Delivery'
-    @page_text = 'Faculty and Staff'
-    element_present?(:link, @link_text).should == true
-    @driver.find_element(:link, @link_text).click
-    @body_text = @driver.find_element(:css, "BODY").text
-    text_found?(@page_text, @body_text)
-
-    @link_text = 'Faculty and Staff'
-    @page_text = 'Faculty and Staff Policies'
-    element_present?(:link, @link_text).should == true
-    @driver.find_element(:link, @link_text).click
-    @body_text = @driver.find_element(:css, "BODY").text
-    text_found?(@page_text, @body_text)
-  end
-  
-  def element_present?(how, what)
-    @driver.find_element(how, what)
-    true
-  rescue Selenium::WebDriver::Error::NoSuchElementError
-    false
-  end
-  
-  def alert_present?()
-    @driver.switch_to.alert
-    true
-  rescue Selenium::WebDriver::Error::NoAlertPresentError
-    false
-  end
-  
-  def verify(&blk)
-    yield
-  rescue ExpectationNotMetError => ex
-    @verification_errors << ex
-  end
-  
-  def close_alert_and_get_its_text(how, what)
-    alert = @driver.switch_to().alert()
-    alert_text = alert.text
-    if (@accept_next_alert) then
-      alert.accept()
-    else
-      alert.dismiss()
+    page_texts.each do |l|
+      text_found?(l['ptext'], @body_text)
+      links_present?( l['ptext'],l['pcount']).should be_true ,"expected #{l['pcount']} links for #{l['ptext']}, got #{links_present(l['ptext'])}"
     end
-    alert_text
-  ensure
-    @accept_next_alert = true
   end
+
+  it "should have standard links, and they are duplicated in the footer" do
+    @driver.get(@base_url + "/")
+    @driver.manage.window.move_to(300, 400)
+    @driver.manage.window.resize_to(1024, 600)
+    #@driver.manage.window.maximize
+    page_texts = [
+     {"ptext"=>"Home","pcount"=>2}, 
+     {"ptext"=>"Feedback","pcount"=>1}, 
+     {"ptext"=>"About Us","pcount"=>2}, 
+     {"ptext"=>"Research","pcount"=>6}, 
+     {"ptext"=>"Libraries and Hours","pcount"=>1}, 
+     {"ptext"=>"Courses","pcount"=>3}, 
+     {"ptext"=>"Services","pcount"=>5}, 
+     {"ptext"=>"Ask a Librarian","pcount"=>3}, 
+     ]
+    @driver.save_screenshot("home1024.png")
+    element_present?(:class,'navbar-toggle').should be_true,"expected to find icon bar and did not"
+    nb = @driver.find_element(:class,'navbar-toggle')
+    nb.displayed?.should be_false ,"nav bar should NOT be visible"
+    element_present?(:tag_name,'footer').should be_true,"expected to find footer and did not"
+    @body_text = @driver.find_element(:css, "BODY").text
+    page_texts.each do |l|
+      text_found?(l['ptext'], @body_text).should be_true, "expected to find  #{l['ptext']} and did not"
+      links_present?( l['ptext'],l['pcount']).should be_true ,"expected #{l['pcount']} links for #{l['ptext']}, got #{links_present(l['ptext'])}"
+    end
+  end
+
+ it "should have standard links, when the size is like a mobile, and they are duplicated in the footer" do
+    @driver.get(@base_url + "/")
+    @driver.manage.window.move_to(300, 400)
+    @driver.manage.window.resize_to(300, 400)
+    #@driver.manage.window.maximize
+    page_texts = [
+     {"ptext"=>"Feedback","pcount"=>1},
+     {"ptext"=>"Libraries","pcount"=>1},
+     {"ptext"=>"Menu","pcount"=>1},
+     ]
+    @driver.save_screenshot("home300.png")
+    element_present?(:class,'navbar-toggle').should be_true,"expected to find icon bar and did not"
+    nb = @driver.find_element(:class,'navbar-toggle')
+    nb.displayed?.should be_true,"nav bar should be visible"
+    element_present?(:tag_name,'footer').should be_true,"expected to find footer and did not"
+    @body_text = @driver.find_element(:css, "BODY").text
+    page_texts.each do |l|
+      text_found?(l['ptext'], @body_text).should be_true, "expected to find  #{l['ptext']} and did not"
+      links_present?( l['ptext'],l['pcount']).should be_true ,"expected #{l['pcount']} links for #{l['ptext']}, got #{links_present(l['ptext'])}"
+    end
+  end
+
 end
