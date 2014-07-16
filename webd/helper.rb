@@ -3,7 +3,7 @@ module DriverHelper
  def text_found?(what,where)
    ttext = Regexp.new(what.dup.force_encoding('UTF-8'))
    btext = where.delete("^\u{0000}-\u{007F}").force_encoding('UTF-8')
-   btext.should =~ ttext
+   expect(btext).to  match (ttext)
  end
 def links_present(t)
      @driver.find_elements(:partial_link_text, t).size

@@ -2,9 +2,12 @@ set GEM_HOME to where you need your gems to
 be, like $HOME/rvmxxx
 export GEM_HOME=~/rvmxxx
 bundle install
+You can run the tests in two modes:
+Selenium 'Remote Control', or 'Web driver'
 
-now you need to get the 
-selenium server standalone
+Selenium 'Remote Control'
+
+Get the selenium server standalone
   wget 'http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar'
   java -jar *.jar &
 
@@ -36,10 +39,16 @@ Then the rspec finishes
 Finished in 7.96 seconds
 1 example, 0 failures
 
-To run this using webdriver,
-make sure phantomjs is in your path
+Web Driver
 
-then run
+To run this using webdriver, make sure phantomjs is in your path
+something like: (assuming you are in the checked out directory)
+
+PATH=$PWD/bin:$PATH
+
+The configuration shell script in jenkins does this.
+
+Run
 rspec webd/*.rb
 
 
