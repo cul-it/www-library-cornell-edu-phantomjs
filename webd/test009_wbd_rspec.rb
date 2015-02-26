@@ -14,9 +14,9 @@ describe "The website" do
     _after
   end
 
-  it "should link to 'Borrow, Request, Renew, Return' which shows the text 'Borrow, Request, Renew, Return'" do
-    @link_text = 'Borrow, Request, Renew, Return'
-    @page_text = 'Borrow, Request, Renew, Return'
+  it "should link to 'Borrow, Renew, Return' which shows the text 'Borrow, Request, Renew, Return'" do
+    @link_text = 'Borrow, Renew, Return'
+    @page_text = 'Borrow, Renew, Return'
     @driver.get(@base_url + "/")
     element_present?(:partial_link_text, @link_text).should == true
     @driver.find_element(:partial_link_text, @link_text).click
@@ -25,8 +25,8 @@ describe "The website" do
   end
 
   it "should link to 'Requests' which shows the text 'Borrowing and Delivery', and links to Faculty and Staff page." do
-    @link_text = 'Borrow, Request, Renew, Return'
-    @page_text = 'Borrow, Request, Renew, Return'
+    @link_text = 'Borrow, Renew, Return'
+    @page_text = 'Borrow, Renew, Return'
     @driver.get(@base_url + "/")
     element_present?(:partial_link_text, @link_text).should == true
     @driver.find_element(:partial_link_text, @link_text).click

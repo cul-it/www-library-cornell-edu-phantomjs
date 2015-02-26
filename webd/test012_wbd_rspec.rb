@@ -16,7 +16,7 @@ describe "The website" do
 
   it "should have a link to 'Library Spaces' which shows the library spaces." do
     page_texts = [
-     {"ptext"=>"Borrow, Request, Renew, Return","pcount"=>1}, 
+     {"ptext"=>"Borrow, Renew, Return","pcount"=>1}, 
      {"ptext"=>"Disability Services","pcount"=>1}, 
      {"ptext"=>"Library Spaces","pcount"=>1},
      {"ptext"=>"NEWS","pcount"=>0}, 

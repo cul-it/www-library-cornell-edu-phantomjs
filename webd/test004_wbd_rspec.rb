@@ -166,6 +166,7 @@ describe "The website" do
     last = @driver.find_element(:id, 'last_imported_widget').text
     text = last 
     #print last 
-    text.should  == "Last Imported(2)"
+    #Very fragile
+    text.should  == "Last Imported(23)"
   end
 end

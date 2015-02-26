@@ -16,7 +16,7 @@ describe "The website" do
 
   it "should have a link to 'Services' which shows the various service related links." do
     page_texts = [
-     {"ptext"=>"Borrow, Request, Renew, Return","pcount"=>2}, 
+     {"ptext"=>"Borrow, Renew, Return","pcount"=>2}, 
      {"ptext"=>"Computing and Equipment","pcount"=>1},
      {"ptext"=>"Passkey and other tools","pcount"=>1}, 
      {"ptext"=>"Disability Services","pcount"=>2}, 

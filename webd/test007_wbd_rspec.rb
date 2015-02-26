@@ -23,7 +23,7 @@ describe "The website" do
     sbox.send_keys "Shakespeare"
     sbox.submit
     @body_text = @driver.find_element(:css, "BODY").text
-    text_found?("ENGL 1127", @body_text)
+    text_found?("ENGL", @body_text)
   end
   
   it "should have a link to 'course help' which shows a form to search course info and searches on class number" do
@@ -47,7 +47,7 @@ describe "The website" do
     sbox.send_keys "Gainor"
     sbox.submit
     @body_text = @driver.find_element(:css, "BODY").text
-    text_found?("ENGL 1131:", @body_text)
+    text_found?("ENGL", @body_text)
   end
 
   it "should have a link to 'course help' which shows a form to search course info and searches on instructor who does not exist" do
