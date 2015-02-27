@@ -167,6 +167,7 @@ describe "The website" do
     text = last 
     #print last 
     #Very fragile
-    text.should  == "Last Imported(23)"
+    text.start_with?('Last Imported').should  == true 
+    #text.should  == "Last Imported(23)"
   end
 end
