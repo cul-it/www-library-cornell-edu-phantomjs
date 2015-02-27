@@ -135,6 +135,11 @@ describe "The website" do
     @body_text = @driver.find_element(:css, "BODY").text
     text = @body_text
     text_found?(uname, text)
+    print @driver.find_element(:css, "BODY").inspect
+    element_present?(:class, "pa-item-title").should be_true, "title element should be present in my account listings"
+    element_present?(:class, "pa-item-au").should be_true, "author element should be present in my account listings" 
+    element_present?(:class, "pa-item-callno").should be_true, "callno element should be present in my account listings"
+
     a = @driver.find_element(:id,'item_0_renew')
     sleep 10
     a.click  
